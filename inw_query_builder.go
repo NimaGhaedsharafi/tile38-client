@@ -184,6 +184,12 @@ func (query InwQueryBuilder) NoFields() InwQueryBuilder {
 	return query
 }
 
+// WithFields tells the server that you require field values returned with the search results.
+func (query InwQueryBuilder) WithFields() InwQueryBuilder {
+	query.opts = append(query.opts, NewCommand("WITHFIELDS"))
+	return query
+}
+
 // Format set response format.
 func (query InwQueryBuilder) Format(fmt OutputFormat) InwQueryBuilder {
 	query.outputFormat = fmt
